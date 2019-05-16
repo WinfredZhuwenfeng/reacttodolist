@@ -1,5 +1,5 @@
-import { INPUT_CHANGE_VAULE, ADD_TODO_ITEM, DEL_TODO_ITEM,INIT_TODO_LIST } from './actionTypes'
-import axios from 'axios';
+import { INPUT_CHANGE_VAULE, ADD_TODO_ITEM, DEL_TODO_ITEM,INIT_TODO_LIST, SAGAS_INIT_TODO_LIST } from './actionTypes'
+
 
 export const getInputChangeAction = (value) => ({
   type: INPUT_CHANGE_VAULE,
@@ -20,12 +20,17 @@ export const getInitListAction = (data) => ({
   data
 });
 
-export const getInitListReduxAction = (data) => {
-  return (dispatch) => {
-    axios.get('/list.json').then((res)=>{
-      const data = res;
-      const action = getInitListAction(data)
-      dispatch(action)
-    }).catch((err)=>{console.log(err)})
-  }
-}
+// export const getInitListReduxAction = (data) => {
+//   return (dispatch) => {
+//     axios.get('/list.json').then((res)=>{
+//       const data = res;
+//       const action = getInitListAction(data)
+//       dispatch(action)
+//     }).catch((err)=>{console.log(err)})
+//   }
+// }
+// 
+
+export const getInitListSagasAction = () => ({
+  type:  SAGAS_INIT_TODO_LIST,
+})
